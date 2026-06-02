@@ -1,0 +1,61 @@
+{
+  "name": "captchasonic",
+  "version": "2.2.0",
+  "description": "Official CaptchaSonic library for Node.js and TypeScript environments. Modern, Promise-based, with first-class TypeScript support and automatic retry logic.",
+  "type": "module",
+  "main": "./dist/client.js",
+  "types": "./dist/client.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/client.js",
+      "types": "./dist/client.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "prepare": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "captcha",
+    "captcha-solver",
+    "captchasonic",
+    "recaptcha",
+    "geetest",
+    "cloudflare",
+    "turnstile",
+    "aws-waf",
+    "tiktok",
+    "grpc",
+    "connectrpc",
+    "antibot"
+  ],
+  "license": "MIT",
+  "author": "CaptchaSonic support@captchasonic.com",
+  "homepage": "https://captchasonic.com",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist/**",
+    "src/gen/**",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@bufbuild/protobuf": "^2.12.0",
+    "@connectrpc/connect": "^2.1.1",
+    "@connectrpc/connect-node": "^2.1.1",
+    "@connectrpc/connect-web": "^2.1.1"
+  },
+  "devDependencies": {
+    "@bufbuild/protoc-gen-es": "^2.12.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.4.0"
+  }
+}
