@@ -635,7 +635,7 @@ export class CaptchaSonic {
       if (errId !== 0 && errId !== 200) {
         throw new SonicError(errMsg || `Server error (errorId=${errId})`, errId);
       }
-      if (data.taskId && ["processing", "pending"].includes(data.status as string)) {
+      if (data.taskId && ["processing", "pending", "idle"].includes(data.status as string)) {
         return this.pollTaskHttp(data.taskId as string);
       }
       // Normalize Shape A (code/answers) → consistent { errorId, typedSolution }
@@ -649,7 +649,7 @@ export class CaptchaSonic {
     if (response.errorId !== 0) {
       throw new SonicError(response.errorDescription || `Server error (errorId=${response.errorId})`, response.errorId);
     }
-    if (response.taskId && ["processing", "pending"].includes(response.status)) {
+    if (response.taskId && ["processing", "pending", "idle"].includes(response.status)) {
       return this.pollTask(response.taskId) as unknown as Promise<CreateTaskResponse>;
     }
     // Parse gRPC solution.answers (Go fmt.Sprint string) → typedSolution
